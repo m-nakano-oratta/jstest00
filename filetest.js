@@ -34,14 +34,16 @@ var assert = require('assert');
 var sys = require('sys');
 var flr = require('./fileLineReader');
 var fs = require('fs');
-
+// 相対パス
 var path = "../test/pokerchipTest/pokerchipTest/";
+// 処理したいファイル
 var files = ["Chip.cs", "Field.cs", "CompDist.cs"];
-
+// ファイルを消す。もっといい方法がありそう
 var fd = fs.openSync("./test.txt", "w");
 fs.closeSync(fd);
+// 追記モード
 fd = fs.openSync("./test.txt", "a");
-
+// C#のIDE専用
 fs.writeSync(fd, "#region\r", 0, "utf-8");
 
 for (var i = 0; i < files.length; i++) {
@@ -55,6 +57,7 @@ for (var i = 0; i < files.length; i++) {
 
 	outputFile(fs, fd, reader );
 }
+// C#のIDE専用
 fs.writeSync(fd, "#endregion\r", 0, "utf-8");
 
 fs.closeSync(fd);
