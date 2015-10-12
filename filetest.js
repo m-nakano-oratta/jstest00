@@ -11,7 +11,7 @@ function outputFile(fs, fd, reader) {
 					isInOutput = false;
 					continue;
 				}
-				fs.writeSync(fd, line, 0, encoing);
+				fs.writeSync(fd, line + "\n", 0, encoing);
 			}
 			else {
 				if (line.indexOf(strStart) > -1) {
@@ -45,7 +45,7 @@ fs.closeSync(fd);
 // 追記モード
 fd = fs.openSync(outputName, "a");
 // C#のIDE専用
-fs.writeSync(fd, "#region\r", 0, encoing);
+fs.writeSync(fd, "#region\r\n", 0, encoing);
 
 for (var i = 0; i < files.length; i++) {
 
@@ -59,7 +59,7 @@ for (var i = 0; i < files.length; i++) {
 	outputFile(fs, fd, reader );
 }
 // C#のIDE専用
-fs.writeSync(fd, "#endregion\r", 0, encoing);
+fs.writeSync(fd, "#endregion\r\n", 0, encoing);
 
 fs.closeSync(fd);
 
