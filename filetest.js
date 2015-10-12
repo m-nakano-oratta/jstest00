@@ -33,8 +33,6 @@ function outputFile(fs, fd, reader) {
 var assert = require('assert');
 var sys = require('sys');
 var flr = require('./fileLineReader');
-delete require.cache[require.resolve('./fileLineReader')]
-var flr = require('./fileLineReader');
 var fs = require('fs');
 
 var path = "../test/pokerchipTest/pokerchipTest/";
