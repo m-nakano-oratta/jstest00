@@ -11,7 +11,7 @@ function outputFile(fs, fd, reader) {
 					isInOutput = false;
 					continue;
 				}
-				fs.writeSync(fd, line, 0, "utf-8");
+				fs.writeSync(fd, line, 0, encoing);
 			}
 			else {
 				if (line.indexOf(strStart) > -1) {
@@ -29,7 +29,7 @@ function outputFile(fs, fd, reader) {
 	}
 
 }
-
+var encoing = "utf-8";
 var assert = require('assert');
 var sys = require('sys');
 var flr = require('./fileLineReader');
@@ -44,7 +44,7 @@ fs.closeSync(fd);
 // 追記モード
 fd = fs.openSync("./test.txt", "a");
 // C#のIDE専用
-fs.writeSync(fd, "#region\r", 0, "utf-8");
+fs.writeSync(fd, "#region\r", 0, encoing);
 
 for (var i = 0; i < files.length; i++) {
 
@@ -58,7 +58,7 @@ for (var i = 0; i < files.length; i++) {
 	outputFile(fs, fd, reader );
 }
 // C#のIDE専用
-fs.writeSync(fd, "#endregion\r", 0, "utf-8");
+fs.writeSync(fd, "#endregion\r", 0, encoing);
 
 fs.closeSync(fd);
 
