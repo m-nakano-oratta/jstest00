@@ -30,6 +30,7 @@ function outputFile(fs, fd, reader) {
 
 }
 var encoing = "utf-8";
+var outputName = "./test.txt";
 var assert = require('assert');
 var sys = require('sys');
 var flr = require('./fileLineReader');
@@ -39,10 +40,10 @@ var path = "../test/pokerchipTest/pokerchipTest/";
 // 処理したいファイル
 var files = ["Chip.cs", "Field.cs", "CompDist.cs"];
 // ファイルを消す。もっといい方法がありそう
-var fd = fs.openSync("./test.txt", "w");
+var fd = fs.openSync(outputName, "w");
 fs.closeSync(fd);
 // 追記モード
-fd = fs.openSync("./test.txt", "a");
+fd = fs.openSync(outputName, "a");
 // C#のIDE専用
 fs.writeSync(fd, "#region\r", 0, encoing);
 
